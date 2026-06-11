@@ -10,7 +10,7 @@ class UserCreateRequest(BaseModel):
     name: str
 
 
-@router.post("/register")
+@router.post("/users/register")
 def register_user(payload: UserCreateRequest):
     if not is_valid_email(payload.email):
         raise HTTPException(
