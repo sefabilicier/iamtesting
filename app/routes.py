@@ -1,16 +1,12 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-import re
+from app.validators import is_valid_email
 
 router = APIRouter()
 
 class UserCreateRequest(BaseModel):
     email: str
     name: str
-
-def is_valid_email(email: str) -> bool:
-    pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
-    return re.match(pattern, email) is not None
 
 @router.post("/register")
 def register_user(payload: UserCreateRequest):
