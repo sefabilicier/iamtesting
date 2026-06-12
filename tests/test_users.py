@@ -17,3 +17,10 @@ def test_valid_email():
         json={"email": "test@example.com", "name": "Test"}
     )
     assert response.status_code == 200
+
+def test_valid_email_with_subdomain():
+    response = client.post(
+        "/users/register",
+        json={"email": "test@subdomain.example.com", "name": "Test"}
+    )
+    assert response.status_code == 200
