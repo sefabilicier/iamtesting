@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from validators import is_valid_email
+from app.validators import is_valid_email  # app.validators
 
 router = APIRouter()
 
