@@ -1,5 +1,5 @@
 from fastapi.testclient import TestClient
-from main import app  # app.main yerine main
+from main import app
 
 client = TestClient(app)
 
@@ -17,3 +17,5 @@ def test_valid_email():
         json={"email": "test@example.com", "name": "Test"}
     )
     assert response.status_code == 200
+    assert response.json()["message"] == "User created successfully"
+    assert response.json()["email"] == "test@example.com"
