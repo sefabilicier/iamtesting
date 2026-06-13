@@ -13,8 +13,8 @@ def test_invalid_email():
         "/users/register",
         json={"email": "invalid-email", "name": "Test"}
     )
-    assert response.status_code == 400
-    assert response.json()["detail"] == "Invalid email format"
+    assert response.status_code == 422
+    assert response.json()["detail"][0]["msg"] == "value is not a valid email address"
 
 
 def test_valid_email():
